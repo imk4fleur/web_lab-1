@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Магазин кактусов</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="hdr" role="banner">
+    <h1 class="title">Магазин кактусов</h1>
+    
+    <button id="btnCart" class="cart-btn" aria-label="Корзина" title="Корзина">
+      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6h2l2 10h9l2-8H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="10.5" cy="19" r="1.1" fill="currentColor"/>
+        <circle cx="17.5" cy="19" r="1.1" fill="currentColor"/>
+      </svg>
+      <span id="cnt" class="cnt-badge" aria-live="polite">0</span>
+    </button>
+  </header>
+
+  <main>
+    <section class="catalog" aria-label="Каталог кактусов">
+      <article class="card" data-sku="c1" data-price="700">
+        <img src="c1.jpg" alt="Кактус Астро" />
+        <h3 class="name">Астро кактус</h3>
+        <div class="price">700 ₽</div>
+        <div class="card-actions">
+          <button class="toCart" type="button">В корзину</button>
+        </div>
+      </article>
+
+      <article class="card" data-sku="c2" data-price="850">
+        <img src="c2.jpg" alt="Колючий друг" />
+        <h3 class="name">Колючий друг</h3>
+        <div class="price">850 ₽</div>
+        <div class="card-actions">
+          <button class="toCart" type="button">В корзину</button>
+        </div>
+      </article>
+
+      <article class="card" data-sku="c3" data-price="520">
+        <img src="c3.jpg" alt="Мини кактус" />
+        <h3 class="name">Мини кактус</h3>
+        <div class="price">520 ₽</div>
+        <div class="card-actions">
+          <button class="toCart" type="button">В корзину</button>
+        </div>
+      </article>
+
+      <article class="card" data-sku="c4" data-price="1200">
+        <img src="c4.jpg" alt="Кактус Луна" />
+        <h3 class="name">Кактус Луна</h3>
+        <div class="price">1200 ₽</div>
+        <div class="card-actions">
+          <button class="toCart" type="button">В корзину</button>
+        </div>
+      </article>
+
+      <article class="card" data-sku="c5" data-price="1800">
+        <img src="c5.jpg" alt="Кактус Большой" />
+        <h3 class="name">Кактус Большой</h3>
+        <div class="price">1800 ₽</div>
+        <div class="card-actions">
+          <button class="toCart" type="button">В корзину</button>
+        </div>
+      </article>
+    <article class="card" data-sku="c6" data-price="600">
+        <img src="c6.jpg" alt="Кактус Луна" />
+        <h3 class="name">Кактус Милый</h3>
+        <div class="price">600 ₽</div>
+        <div class="card-actions">
+          <button class="toCart" type="button">В корзину</button>
+        </div>
+      </article>
+      
+    </section>
+  </main>
+
+
+
+  <div id="cartBox" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="panel">
+      <header class="panel-h">
+        <h2 id="cart-title">Корзина</h2>
+        <button class="close" data-close="cart">×</button>
+      </header>
+      <div class="panel-body">
+        <ul id="list" class="list" aria-live="polite"></ul>
+        <div class="sum">Итого: <strong id="sum">0</strong> ₽</div>
+      </div>
+      <footer class="panel-f">
+        <button id="btnCloseCart" class="muted">Закрыть</button>
+        <button id="btnCheckout" class="primary">Оформить заказ</button>
+      </footer>
+    </div>
+    <div class="backdrop" data-close="cart"></div>
+  </div>
+
+  <div id="orderBox" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="order-title">
+    <div class="panel small">
+      <header class="panel-h">
+        <h2 id="order-title">Оформление заказа</h2>
+        <button class="close" data-close="order">×</button>
+      </header>
+      <div class="panel-body">
+        <form id="orderForm" novalidate>
+          <label>Имя <input name="f" required></label>
+          <label>Фамилия <input name="l" required></label>
+          <label>Адрес доставки <input name="addr" required></label>
+          <label>Телефон <input id="phone" name="phone" type="tel" required></label>
+          <div id="phErr" class="err"></div>
+          <div class="form-actions">
+            <button type="submit" class="primary">Создать заказ</button>
+            <button type="button" id="cancel" class="muted">Отмена</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="backdrop" data-close="order"></div>
+  </div>
+
+  <div id="doneBox" class="center-modal hidden" role="alertdialog" aria-modal="true">
+    <div class="done-panel">
+      <button class="close" id="doneClose">×</button>
+      <h3>Заказ создан!</h3>
+      <p>Спасибо — мы скоро свяжемся.</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
